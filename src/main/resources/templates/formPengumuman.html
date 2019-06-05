@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>PSB - SMA Bintang Timur 1 Balige</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    
+
+  <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+  </head>
+  <body>
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+	    	<a class="navbar-brand" href="/index">SMA BTB</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item active"><a href="/index" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item active"><a href="/pendaftaran" class="nav-link pl-0">Pendaftaran</a></li>
+	        	<li class="nav-item active"><a href="/pembayaran" class="nav-link pl-0">Pembayaran</a></li>
+				
+				<li class="nav-item active"><a href="/seleksi" class="nav-link pl-0">Seleksi</a></li>
+				<li class="nav-item"><a href="/pengumuman" class="nav-link">Pengumuman</a></li>
+	        	<li class="nav-item active" sec:authorize="isAuthenticated()"><a class="nav-link pl-0" th:href="@{/logout}" >Logout  (<span th:utext="${#request.userPrincipal.name}"></span>)</a></li>
+			</ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    <form class="form-horizontal" th:object="${pengumuman}" th:action="@{/pengumuman/create}" method="post">
+    	<input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{version}"/>
+
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Pengumuman</div>
+                        <div class="card-body">
+                           
+                                
+                                <div class="form-group row">
+                                    <label for="judul" class="col-md-4 col-form-label text-md-right">Judul</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="judul" class="form-control"  th:field="*{judul}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="dibuat_oleh" class="col-md-4 col-form-label text-md-right">Dibuat Oleh</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="dibuat_oleh" class="form-control"  th:field="*{dibuat_oleh}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="tanggal" class="col-md-4 col-form-label text-md-right">Tanggal</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="tanggal" class="form-control" placeholder="20190529" th:field="*{tanggal}"/>
+                                    	<h10>Ketikkan Tanggal dengan Format yyyy-mm-dd </h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="isi" class="col-md-4 col-form-label text-md-right">Isi</label>
+                                    <div class="col-md-6">
+                                       <input type="text" id="isi" class="form-control"  th:field="*{isi}"/>
+                                    	<h10>masukkan pengumuman</h10>
+                                    </div>
+                                </div>
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                        Publish
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                           
+                        </div>
+                    </div>
+            </div>
+        </div>
+   
+</form>
+    <br>
+
+
+
+		
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | PSB - SMA Bintang Timur 1 Balige <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Proyek Sistem informasi PSI-02</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  
+
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/jquery.stellar.min.js}"></script>
+  <script th:src="@{/js/aos.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
+    
+  </body>
+</html>

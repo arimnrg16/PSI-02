@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>PSB - SMA Bintang Timur 1 Balige</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  	<link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+	
+</head>
+<body>
+<br>
+<div class="container d-flex align-items-center">
+	    	<a class="navbar-brand" >PSB BTB</a>
+	    	</div>
+
+	<div class="signin-form">
+
+				
+				
+				<form th:action="@{/login}" method="post">
+				<div class="text-center">
+				<h1>Login</h1>
+				
+				
+				</div>
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or
+							password.</div>
+					</div>
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">Kamu telah logged out.</div>
+					</div>
+					<div class="form-group">
+						<label for="username">Username</label>: <input type="text"
+							id="username" name="username" class="form-control"
+							autofocus="autofocus" placeholder="Username" />
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Password" />
+					</div>
+					<div class="form-group">
+						
+							
+								<button type="submit" name="login-submit" id="login-submit"
+									class="btn btn-success btn-lg btn-block signup-btn" value="Log In">Log In</button>
+							
+					
+					</div>
+				
+			          <p class="text-center">Sign in dengan social media account</p>
+			          <div class="social-btn text-center">
+			            <a href="#" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
+			            <a href="#" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
+			            <a href="#" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
+			          </div>
+			          <br>
+			
+					<div class="text-center">
+						<span >New user? <a href="/" th:href="@{/registration}">Register
+								here</a></span>
+					</div>
+				</form>
+			</div>
+		
+
+
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

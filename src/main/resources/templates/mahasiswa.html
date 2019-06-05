@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>PSB - SMA Bintang Timur 1 Balige</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  	<link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  </head>
+  
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+	    	<a class="navbar-brand" href="/index">SMA BTB</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item active"><a href="/index" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item active"><a href="/pendaftaran/create" class="nav-link pl-0">Pendaftaran</a></li>
+	        	<li class="nav-item active"><a href="/pembayaran/create" class="nav-link pl-0">Pembayaran</a></li>
+				
+				<li class="nav-item active"><a href="/seleksi" class="nav-link pl-0">Seleksi</a></li>
+				<li class="nav-item active"><a href="/pengumuman/create" class="nav-link pl-0">Pengumuman</a></li>
+	        	<li class="nav-item active"><a href="#" class="nav-link pl-0">Logout</a></li>
+				<li class="nav-item active"><a href="/index" class="nav-link pl-0">Login</a></li>
+			</ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+<div class="container">
+    <h1>Daftar Nama Mahasiswa</h1>
+    <br>
+  	<div th:if="${not #lists.isEmpty(mahasiswa)}">
+
+	<table class="table table-striped">
+		<tr>
+			<th>nama</th>
+			<th>Nim</th>
+			<td>Jurusan</td>
+			<th>Action</th>
+		</tr>
+		<tr th:each="mahasiswas : ${mahasiswa}">
+			<td th:text="${mahasiswas.nama}"></td>
+			<td th:text="${mahasiswas.jurusan}"></td>
+			<td th:text="${mahasiswas.nim}"></td>
+			<td>
+				<a th:href="${'/mahasiswa/edit/'+mahasiswas.id}"><span class="glyphicon glyphicon-edit"></span></a>
+				<a th:href="${'/mahasiswa/hapus/'+mahasiswas.id}"><span class="glyphicon glyphicon-remove"></span></a>
+			</td>
+			
+		</tr>
+		</table>
+		</div>
+
+	<div>
+	 	<a class="btn btn-default" href="/mahasiswa/create">Add New</a>
+	</div>
+
+</div><!-- /.container -->
+
+		
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  			Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | PSB - SMA Bintang Timur 1 Balige <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Proyek Sistem informasi PSI-02</a>
+  			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>  
+
+  <!-- loader -->
+  
+	  <script th:src="@{/js/jquery.min.js}"></script>
+	  <script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+	  <script th:src="@{/js/bootstrap.min.js}"></script>
+	  <script th:src="@{/js/jquery.stellar.min.js}"></script>
+	  <script th:src="@{/js/aos.js}"></script>
+	  <script th:src="@{/js/main.js}"></script>
+  	</body>
+</html>

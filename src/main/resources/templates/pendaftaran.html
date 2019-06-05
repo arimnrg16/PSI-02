@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>PSB - SMA Bintang Timur 1 Balige</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+	<link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet" media="screen"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+    
+
+  </head>
+ <body>
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+	    	<a class="navbar-brand" href="/index">SMA BTB</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item active"><a href="/index" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item"><a href="/pendaftaran" class="nav-link">Pendaftaran</a></li>
+	        	<li class="nav-item active"><a href="/pembayaran" class="nav-link pl-0">Pembayaran</a></li>
+				
+				<li class="nav-item active"><a href="/seleksi" class="nav-link pl-0">Seleksi</a></li>
+				<li class="nav-item active"><a href="/pengumuman" class="nav-link pl-0">Pengumuman</a></li>
+	        	<li class="nav-item active" sec:authorize="isAuthenticated()"><a class="nav-link pl-0" th:href="@{/logout}" >Logout  (<span th:utext="${#request.userPrincipal.name}"></span>)</a></li>
+			</ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+<div class="container">
+
+<br>
+<br>
+   <h2><b>Daftar Nama Siswa Pendaftar</b></h2>
+   <br>
+   <br>
+   
+   <br>
+ <div>
+	  	<a class="btn btn-primary" href="/pendaftaran/create">Add New</a>
+	  </div>
+<br>
+
+  
+  <div th:if="${not #lists.isEmpty(pendaftaran)}">
+
+<table class="table table-striped">
+		<tr>
+			<th>Nama Lengkap</th>
+			<th>NIK</th>
+			<th>Jenis Kelamin</th>
+			<th>Tempat Lahir</th>
+			
+			<th>Tanggal Lahir</th>
+			<th>Alamat Rumah</th>
+			<th>Kode Pos</th>
+			<th>Nomor HP</th>
+			<th>Asal Sekolah</th>
+			<th>Nama Ayah</th>
+			<th>Nama Ibu</th>
+			<th>Nama Wali</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="pendaftarans : ${pendaftaran}">
+			<td th:text="${pendaftarans.nama_lengkap}"></td>
+			<td th:text="${pendaftarans.nik}"></td>
+			
+			<td th:text="${pendaftarans.jenis_kelamin}"></td>
+			<td th:text="${pendaftarans.tempat_lahir}"></td>
+			<td th:text="${pendaftarans.tanggal_lahir}"></td>
+			<td th:text="${pendaftarans.alamat_jalan}"></td>
+			<td th:text="${pendaftarans.kode_pos}"></td>
+			<td th:text="${pendaftarans.nomor_hp}"></td>
+			<td th:text="${pendaftarans.nama_sekolah}"></td>
+			<td th:text="${pendaftarans.nama_ayah}"></td>
+			<td th:text="${pendaftarans.nama_ibu}"></td>
+			<td th:text="${pendaftarans.nama_wali}"></td>
+			<td>						
+				<a th:href="${'/pendaftaran/edit/'+pendaftarans.id}"><span class="glyphicon glyphicon-edit"></span></a>
+				<a th:href="${'/pendaftaran/hapus/'+pendaftarans.id}"><span class="glyphicon glyphicon-trash"></span></a>
+			</td>
+			
+		</tr>
+		</table>
+</div>
+<br>
+<br>
+
+<tr th:each="pendaftarans : ${pendaftaran}">
+										
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                <div class="image-container">
+                                    <img src="/images/image_1.jpg" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                    
+                                    <div class="middle">
+                                    <br>
+                                        <input type="button" class="btn btn-secondary" id="btnDownload" value="Download" />
+                                         <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
+                                         
+                                        <input type="file" style="display: none;" id="profilePicture" name="file" />
+                                        
+                                    </div>
+                                </div>
+                                <div class="userData ml-3">
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"><td th:text="${pendaftarans.nama_lengkap}"></td></a></h2>
+                                    <h6 class="d-block"><a >Nomor Pendaftaran Anda : 1905</a> <td th:text="${pendaftarans.id}"></td></h6>
+                                    <h6 class="d-block"> Silahkan bawa saat melakukan pendaftaran ulang</h6>
+                                </div>
+                                <div class="ml-auto">
+                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#ayah" role="tab" aria-controls="connectedServices" aria-selected="false">Data Ayah Kandung</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#ibu" role="tab" aria-controls="connectedServices" aria-selected="false">Data Ibu Kandung</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#wali" role="tab" aria-controls="connectedServices" aria-selected="false">Data Wali</a>
+                                    </li>
+                                </ul>
+                                
+                                
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Nama Lengkap</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.nama_lengkap}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Jenis Kelamin</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.jenis_kelamin}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">NIK/No.Kitas(untuk WNA)</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.nik}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Tempat Lahir</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                               <td th:text="${pendaftarans.tempat_lahir}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Tanggal Lahir</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                               <td th:text="${pendaftarans.tanggal_lahir}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                         <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Agama/Kepercayaan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.agama_dan_kepercayaan}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                         <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Kewarganegaraan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.kewarganegaraan}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                         <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Berkebutuhan Khusus</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.berkebutuhan_khusus_siswa}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Kecamatan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.kecamatan}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Alamat Jalan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                               <td th:text="${pendaftarans.alamat_jalan}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Kode POS</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.kode_pos}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                          <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Nomor HP</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.nomor_hp}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Alamat Sekolah</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.alamat_sekolah}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Nama Sekolah</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <td th:text="${pendaftarans.nama_sekolah}"></td>
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                    </div>
+                                    
+                                    
+                                    <div class="tab-pane fade" id="ayah" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                       <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Tampilkan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Tentang Ayah Kandung
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="ibu" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                       <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Tampilkan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Tentang Ibu Kandung
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="wali" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                       <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Tampilkan</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                Tentang Wali
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        </div>
+                                        
+                                        
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                                    <br>
+<br>
+
+
+                </div>
+            </div>
+        </div>
+         <br>
+          <br>
+  </tr>
+ 
+</div><!-- /.container -->
+<br>
+<br>
+<br>
+	
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | PSB - SMA Bintang Timur 1 Balige <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Proyek Sistem informasi PSI-02</a>
+			  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/jquery.stellar.min.js}"></script>
+  <script th:src="@{/js/aos.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
+    
+  </body>
+</html>

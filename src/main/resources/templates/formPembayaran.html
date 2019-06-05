@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>PSB - SMA Bintang Timur 1 Balige</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  	<link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" th:src="@{/pop.js/}"></script>
+
+	
+  </head>
+  <body>
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+	    	<a class="navbar-brand" href="/index">SMA BTB</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	     <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item active"><a href="/index" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item active"><a href="/pendaftaran" class="nav-link pl-0">Pendaftaran</a></li>
+	        	<li class="nav-item"><a href="/pembayaran" class="nav-link">Pembayaran</a></li>
+				
+				<li class="nav-item active"><a href="/seleksi" class="nav-link pl-0">Seleksi</a></li>
+				<li class="nav-item active"><a href="/pengumuman" class="nav-link pl-0">Pengumuman</a></li>
+	        	<li class="nav-item active" sec:authorize="isAuthenticated()"><a class="nav-link pl-0" th:href="@{/logout}" >Logout  (<span th:utext="${#request.userPrincipal.name}"></span>)</a></li>
+			</ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    <form class="form-horizontal" th:object="${pembayaran}" th:action="@{/pembayaran/create}" method="post">
+    	<input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{version}"/>
+
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header"><b>Pembayaran</b></div>
+                        <div class="card-body">
+                           
+                                
+                                <div class="form-group row">
+                                    <label for="nama_pengirim" class="col-md-4 col-form-label text-md-right">Nama Pengirim</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nama_pengirim" class="form-control" placeholder="Ari Whuandaniel Manurung" name="nama_pengirim">
+                                        <h10>Masukkan Nama Pengirim</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="uang_pembangunan" class="col-md-4 col-form-label text-md-right">Uang Pembangunan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="uang_pembangunan" class="form-control" placeholder="1000000" name="uang_pembangunan">
+                                        <h10>Masukkan nilai sebesar Rp. 900.000,- jika Alumni SMP YPK, Rp. 1.000.000,- jika Katolik, Rp. 1.200.000,- jika Non-Katolik</h10>
+                                   
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="uang_sekolah" class="col-md-4 col-form-label text-md-right">Uang Sekolah</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="uang_sekolah" class="form-control" placeholder="240000" name="uang_sekolah">
+                                        <h10>Masukkan nilai sebesar Rp. 240.000,-</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="uang_osis_tahun" class="col-md-4 col-form-label text-md-right">Uang OSIS/Tahun</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="uang_osis_tahun" class="form-control" placeholder="100000" name="uang_osis_tahun">
+                                        <h10>Masukkan nilai sebesar Rp. 100.000,-</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="uang_laboratorium" class="col-md-4 col-form-label text-md-right">Uang Laboratorium dan Perpustakaan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="uang_laboratorium" class="form-control" placeholder="75000" name="uang_laboratorium">
+                                        <h10>Masukkan nilai sebesar Rp. 75.000,-</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="uang_test_psikologi" class="col-md-4 col-form-label text-md-right">Uang Test Psikologi</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="uang_test_psikologi" class="form-control" placeholder="100000" name="uang_test_psikologi">
+                                        <h10>Masukkan nilai sebesar Rp. 100.000,-</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="perlengkapan_siswa" class="col-md-4 col-form-label text-md-right">Uang Perlengkapan Siswa</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="perlengkapan_siswa" class="form-control" placeholder="4300000" name="perlengkapan_siswa">
+                                        <h10>Masukkan nilai sebesar Rp. 430.000,- (*Papan Nama Siswa, Seragam Olahraga, Topi Atribut Sekolah Dasi, Bendara, Kartu Siswa, Photo Siswa & Perpustakaan, Raport)</h10>
+                                    </div>
+                                </div>
+                                
+
+                                
+                                    
+                                    
+                                </div>
+
+                                
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                        Selesai
+                                        </button>
+                                    </div>
+                                     <br>
+                                    
+                                </div>
+                           
+                        </div>
+                    </div>
+            </div>
+      
+   
+</form>
+    <br>
+     <br>
+
+
+
+		
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | PSB - SMA Bintang Timur 1 Balige <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Proyek Sistem informasi PSI-02</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  
+
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/jquery.stellar.min.js}"></script>
+  <script th:src="@{/js/aos.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
+    
+  </body>
+</html>

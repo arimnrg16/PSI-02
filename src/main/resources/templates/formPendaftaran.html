@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>PSB - SMA Bintang Timur 1 Balige</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    
+
+    
+     <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/open-iconic-bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+  </head>
+  <body>
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center">
+	    	<a class="navbar-brand" href="/index">SMA BTB</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item active"><a href="/index" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item"><a href="/pendaftaran" class="nav-link">Pendaftaran</a></li>
+	        	<li class="nav-item active"><a href="/pembayaran" class="nav-link pl-0">Pembayaran</a></li>
+				
+				<li class="nav-item active"><a href="/seleksi" class="nav-link pl-0">Seleksi</a></li>
+				<li class="nav-item active"><a href="/pengumuman" class="nav-link pl-0">Pengumuman</a></li>
+	        	<li class="nav-item active" sec:authorize="isAuthenticated()"><a class="nav-link pl-0" th:href="@{/logout}" >Logout  (<span th:utext="${#request.userPrincipal.name}"></span>)</a></li>
+			</ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+<form class="form-horizontal" th:object="${pendaftaran}" th:action="@{/pendaftaran/create}" method="post">
+    	<input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{version}"/>
+    
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header"><b>Data Pribadi</b></div>
+                        <div class="card-body">
+                            
+
+                                <div class="form-group row">
+                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Nama Lengkap</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control"  th:field="*{nama_lengkap}"/>
+                                        <h10>Nama peserta didik sesuai dokumen resmi yang berlaku (Akta atau Ijazah sebelumnya ). Hanya bisa diubah melalui http://vervalpd.data.kemdikbud.go.id.</h10>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="jenis_kelamin" class="col-md-4 col-form-label text-md-right">Jenis Kelamin</label>
+                                    <div class="col-md-6">
+                                        <input type="radio" name="jenis_kelamin" value="laki-laki"> <b>Laki- laki   </b>
+                                        <input type="radio" name="jenis_kelamin" value="perempuan"> <b>Perempuan</b>
+                                    <h10>Jenis kelamin peserta didik</h10>
+                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="nik" class="col-md-4 col-form-label text-md-right">NIK/No.Kitas(untuk WNA)</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nik" class="form-control"  th:field="*{nik}"/>
+                                        <h10>Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga, Kartu Identitas Anak, atau KTP (jika sudah memiliki) bagi WNI. NIK
+memiliki format 16 digit angka. Contoh: 6112090906021104
+Pastikan NIK tidak tertukar dengan No. Kartu Keluarga, karena keduanya memiliki format yang sama. Bagi WNA, diisi dengan nomor
+Kartu Izin Tinggal Terbatas (KITAS)</h10>
+                                    </div>
+                                </div>
+                                
+                              
+                                
+
+                                <div class="form-group row">
+                                    <label for="tempat_lahir" class="col-md-4 col-form-label text-md-right">Tempat Lahir</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="tempat_lahir" class="form-control"  th:field="*{tempat_lahir}"/>
+                                        <h10>Tempat lahir peserta didik sesuai dokumen resmi yang berlaku</h10>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group row">
+                                    <label for="tanggal_lahir" class="col-md-4 col-form-label text-md-right">Tanggal Lahir</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="tanggal_lahir" class="form-control"  th:field="*{tanggal_lahir}"/>
+                                        <h10>Tanggal lahir peserta didik sesuai dokumen resmi yang berlaku. Hanya bisa diubah melalui http://vervalpd.data.kemdikbud.go.id</h10>
+                                    </div>
+                                </div>
+                                
+                                
+
+                                <div class="form-group row">
+                                    <label for="agama_dan_kepercayaan" class="col-md-4 col-form-label text-md-right">Agama dan Kepercayaan</label>
+                                    <div class="col-md-6">
+                                        <input type="radio" name="agama_dan_kepercayaan" value="kriten_protestan"> <b>Kristen Protestan</b>
+                                        <input type="radio" name="agama_dan_kepercayaan" value="kristen_katolik"><b> Kristen Katolik</b>
+                                        <input type="radio" name="agama_dan_kepercayaan" value="islam"> <b>Islam</b>
+                                        <input type="radio" name="agama_dan_kepercayaan" value="lainnya"> <b>Lainnya</b>
+                                        <h10>Agama atau kepercayaan yang dianut oleh peserta didik. Apabila peserta didik adalah penghayat kepercayaan (misalnya pada daerah
+tertentu yang masih memiliki penganut kepercayaan), dapat memilih opsi Kepercayaan kpd Tuhan YME</h10>
+                                    </div>
+                                </div>
+                                
+                                  <div class="form-group row">
+                                    <label for="kewarganegaraan" class="col-md-4 col-form-label text-md-right">Kewarganegaraan</label>
+                                    <div class="col-md-6">
+                                        <input type="radio" name="jenis_kelamin" value="laki-laki"> <b>Indoneasia (WNI)  </b>
+                                        <input type="radio" name="jenis_kelamin" value="perempuan"> <b>Asing (WNA)</b>
+                                    <h10>Kewarganegaraan peserta didik</h10>
+                                     </div>
+                                </div>
+                                
+                                
+                                <div class="form-group row">
+                                    <label for="berkebutuhan_khusus_siswa" class="col-md-4 col-form-label text-md-right">Berkebutuhan Khusus</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="berkebutuhan_khusus_siswa" class="form-control"  th:field="*{berkebutuhan_khusus_siswa}"/>
+                                        <h10>Kebutuhan khusus yang disandang oleh peserta didik. Dapat dipilih lebih dari satu
+</h10>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group row">
+                                    <label for="kecamatan" class="col-md-4 col-form-label text-md-right">Kecamatan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="kecamatan" class="form-control"  th:field="*{kecamatan}"/>
+                                        <h10>Kecamatan tempat tinggal peserta didik saat ini.</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                        <label for="alamat_jalan" class="col-md-4 col-form-label text-md-right">Alamat Jalan</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="alamat_jalan" class="form-control"  th:field="*{alamat_jalan}"/>
+                                            <h10>Jalur tempat tinggal peserta didik, terdiri atas gang, kompleks, blok, nomor rumah, dan sebagainya selain informasi yang diminta oleh
+kolom-kolom yang lain pada bagian ini. Sebagai contoh, peserta didik tinggal di sebuah kompleks perumahan Griya Adam yang berada
+pada Jalan Kemanggisan, dengan nomor rumah 4-C, di lingkungan RT 005 dan RW 011, Dusun Cempaka, Desa Salatiga. Maka dapat
+diisi dengan Jl. Kemanggisan, Komp. Griya Adam, No. 4-C</h10>
+                                        </div>
+                                    </div>
+                                    
+                                   
+
+                                <div class="form-group row">
+                                    <label for="kode_pos" class="col-md-4 col-form-label text-md-right">Kode Pos</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="kode_pos" class="form-control"  th:field="*{kode_pos}"/>
+                                        <h10>Kode pos tempat tinggal peserta didik saat ini</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                        <label for="no_hp" class="col-md-4 col-form-label text-md-right">Nomor HP</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="no_hp" class="form-control"  th:field="*{nomor_hp}"/>
+                                            <h10>Nomor HP peserta didik</h10>
+                                        </div>
+                                    </div>
+
+                                <div class="form-group row">
+                                    <label for="alamat_sekolah" class="col-md-4 col-form-label text-md-right">Alamat Sekolah</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="alamat_sekolah" class="form-control" th:field="*{alamat_sekolah}"/>
+                                        <h10>Alamat sekolah peserta didik</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="nama_sekolah" class="col-md-4 col-form-label text-md-right">Asal Sekolah</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nama_sekolah" class="form-control"  th:field="*{nama_sekolah}"/>
+                                        <h10>Nama asal Sekolah peserta didik</h10>
+                                    </div>
+                                </div>
+
+                                </div>
+                            
+                        </div>
+                    </div>
+            </div>
+        </div>
+   
+
+
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header"><b>Data Ayah Kandung</b></div>
+                        <div class="card-body">
+                            
+
+                                <div class="form-group row">
+                                    <label for="nama_ayah" class="col-md-4 col-form-label text-md-right">Nama Ayah</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nama_ayah" class="form-control"  th:field="*{nama_ayah}"/>
+                                        <h10>Nama ayah kandung peserta didik sesuai dokumen resmi yang berlaku. Hindari penggunaan gelar akademik atau sosial (seperti Alm., Dr., Drs., S.Pd, dan H.)</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                        <label for="nik_ayah" class="col-md-4 col-form-label text-md-right">NIK Ayah</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="nik_ayah" class="form-control"  th:field="*{nik_ayah}"/>
+                                            <h10>Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga atau KTP ayah kandung peserta didik</h10>
+                                        </div>
+                                    </div>
+
+                                <div class="form-group row">
+                                        <label for="tahun_lahir_ayah" class="col-md-4 col-form-label text-md-right">Tahun Lahir</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="tahun_lahir_ayah" class="form-control"  th:field="*{tahun_lahir_ayah}"/>
+                                            <h10>Tahun lahir ayah kandung peserta didik</h10>
+                                        </div>
+                                    </div>
+                                
+                                <div class="form-group row">
+                                    <label for="pendidikan_ayah" class="col-md-4 col-form-label text-md-right">Pendidikan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pendidikan_ayah" class="form-control"  th:field="*{pendidikan_ayah}"/>
+                                        <h10>Pendidikan terakhir ayah kandung peserta didik</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="pekerjaan_ayah" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pekerjaan_ayah" class="form-control"  th:field="*{pekerjaan_ayah}"/>
+                                        <h10>Pekerjaan utama ayah kandung peserta didik. Pilih Meninggal Dunia apabila ayah kandung peserta didik telah meninggal dunia</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="penghasilan_bulanan_ayah" class="col-md-4 col-form-label text-md-right">Penghasilan Bulanan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="penghasilan_bulanan_ayah" class="form-control"  th:field="*{penghasilan_bulanan_ayah}"/>
+                                        <h10>Rentang penghasilan ayah kandung peserta didik. Kosongkan kolom ini apabila ayah kandung peserta didik telah meninggal dunia atau tidak bekerja</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="berkebutuhan_khusus_ayah" class="col-md-4 col-form-label text-md-right">Berkebutuhan Khusus</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="berkebutuhan_khusus_ayah" class="form-control"  th:field="*{berkebutuhan_khusus_ayah}"/>
+                                        <h10>Kebutuhan khusus yang disandang oleh ayah peserta didik. Dapat dipilih lebih dari satu
+</h10>
+                                    </div>
+                                </div>
+                                
+
+                                
+
+                                </div>
+                           
+                        </div>
+                    </div>
+            </div>
+        </div>
+   
+
+    <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header"><b>Data Ibu Kandung</b></div>
+                            <div class="card-body">
+                               
+
+                                    <div class="form-group row">
+                                    <label for="nama_ibu" class="col-md-4 col-form-label text-md-right">Nama Ibu</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nama_ibu" class="form-control"  th:field="*{nama_ibu}"/>
+                                        <h10>Nama ibu kandung peserta didik sesuai dokumen resmi yang berlaku. Hindari penggunaan gelar akademik atau sosial (seperti Almh.
+Dr., Dra., S.Pd, dan Hj.). Hanya bisa diubah melalui http://vervalpd.data.kemdikbud.go.id.
+                                        </h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                        <label for="nik_ibu" class="col-md-4 col-form-label text-md-right">NIK Ibu</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="nik_ayah" class="form-control"  th:field="*{nik_ibu}"/>
+                                            <h10>Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga atau KTP Ibu kandung peserta didik</h10>
+                                        </div>
+                                    </div>
+
+                                <div class="form-group row">
+                                        <label for="tahun_lahir_ibu" class="col-md-4 col-form-label text-md-right">Tahun Lahir</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="tahun_lahir_ibu" class="form-control"  th:field="*{tahun_lahir_ibu}"/>
+                                            <h10>Tahun lahir ibu kandung peserta didik</h10>
+                                        </div>
+                                    </div>
+                                
+                                <div class="form-group row">
+                                    <label for="pendidikan_ibu" class="col-md-4 col-form-label text-md-right">Pendidikan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pendidikan_ibu" class="form-control"  th:field="*{pendidikan_ibu}"/>
+                                        <h10>Pendidikan terakhir ibu kandung peserta didik</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="pekerjaan_ibu" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pekerjaan_ibu" class="form-control"  th:field="*{pekerjaan_ibu}"/>
+                                        <h10>Pekerjaan utama ibu kandung peserta didik. Pilih Meninggal Dunia apabila ibu kandung peserta didik telah meninggal dunia</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="penghasilan_bulanan_ibu" class="col-md-4 col-form-label text-md-right">Penghasilan Bulanan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="penghasilan_bulanan_ibu" class="form-control"  th:field="*{penghasilan_bulanan_ibu}"/>
+                                        <h10>Rentang penghasilan ibu kandung peserta didik. Kosongkan kolom ini apabila ibu kandung peserta didik telah meninggal dunia atau tidak bekerja</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="berkebutuhan_khusus_ibu" class="col-md-4 col-form-label text-md-right">Berkebutuhan Khusus</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="berkebutuhan_khusus_ibu" class="form-control"  th:field="*{berkebutuhan_khusus_ibu}"/>
+                                        <h10>Kebutuhan khusus yang disandang oleh ibu peserta didik. Dapat dipilih lebih dari satu</h10>
+                                    </div>
+                                </div>
+    
+                                    
+
+
+                                    </div>
+                               
+                            </div>
+                        </div>
+                </div>
+            </div>
+      
+
+
+            <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header"><b>Data Wali</b></div>
+                        <div class="card-body">
+                            
+
+                                <div class="form-group row">
+                                    <label for="nama_wali" class="col-md-4 col-form-label text-md-right">Nama Wali</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nama_wali" class="form-control"  th:field="*{nama_wali}"/>
+                                        <h10>Nama wali peserta didik sesuai dokumen resmi yang berlaku. Hindari penggunaan gelar akademik atau sosial (seperti Dr., Drs., S.Pd, dan H.)</h10>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                        <label for="nik_wali" class="col-md-4 col-form-label text-md-right">NIK Wali</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="nik_wali" class="form-control"  th:field="*{nik_wali}"/>
+                                            <h10>Nomor Induk Kependudukan yang tercantum pada Kartu Keluarga atau KTPwali peserta didik</h10>
+                                        </div>
+                                    </div>
+
+                                 <div class="form-group row">
+                                        <label for="tahun_lahir_wali" class="col-md-4 col-form-label text-md-right">Tahun Lahir</label>
+                                        <div class="col-md-6">
+                                            <input type="text" id="tahun_lahir_wali" class="form-control"  th:field="*{tahun_lahir_wali}"/>
+                                            <h10>Tahun lahir ibu kandung peserta didik</h10>
+                                        </div>
+                                    </div>
+                                    
+                                <div class="form-group row">
+                                    <label for="pendidikan_wali" class="col-md-4 col-form-label text-md-right">Pendidikan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pendidikan_wali" class="form-control"  th:field="*{pendidikan_wali}"/>
+                                        <h10>Pendidikan terakhir wali peserta didik</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="pekerjaan_wali" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="pekerjaan_wali" class="form-control"  th:field="*{pekerjaan_wali}"/>
+                                        <h10>Pekerjaan utama wali peserta didik</h10>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="penghasilan_bulanan_wali" class="col-md-4 col-form-label text-md-right">Penghasilan Bulanan</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="penghasilan_bulanan_wali" class="form-control"  th:field="*{penghasilan_bulanan_wali}"/>
+                                        <h10>Rentang penghasilanwali peserta didik. Kosongkan kolom ini apabila wali tidak bekerja</h10>
+                                    </div>
+                                </div>
+                                
+                              
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                        Register
+                                        </button>
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</form>
+    <br>
+
+
+
+		
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | PSB - SMA Bintang Timur 1 Balige <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Proyek Sistem informasi PSI-02</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+ 
+
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/jquery.stellar.min.js}"></script>
+  <script th:src="@{/js/aos.js}"></script>
+  <script th:src="@{/js/main.js}"></script>
+    
+  </body>
+</html>
