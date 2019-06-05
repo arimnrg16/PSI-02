@@ -9,6 +9,7 @@ Main features:
 
 * Authentication (registration, login)
 * Basic CRUD, File Uploading, Selection, Payment, and Announcement
+
 ===============================================================================
 
 DEMO : [On You Tube](https://www.youtube.com/watch?v=N3SbeZRr2dY&feature=youtu.be)
@@ -30,3 +31,5 @@ Current user:
 SOME SCREENSHOTS:
 
 ![Gambar teks editor VS Code](https://www.petanikode.com/img/markdown/markdown-vscode.png)
+
+![Gambar teks editor VS Code](https://github.com/arimnrg16/PSI-02/blob/master/Poster%20PSI-02/1.png)
