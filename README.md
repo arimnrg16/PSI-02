@@ -30,6 +30,12 @@ Current user:
 
 SOME SCREENSHOTS:
 
-![Gambar teks editor VS Code](https://www.petanikode.com/img/markdown/markdown-vscode.png)
+![Poster PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Poster%20PSI-02/1.png)
+![Poster PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Poster%20PSI-02/2.png)
 
-![Gambar teks editor VS Code](https://github.com/arimnrg16/PSI-02/blob/master/Poster%20PSI-02/1.png)
+![Screenshoot PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Screenshots/Screenshot%20(97).png)
+![Screenshoot PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Screenshots/Screenshot%20(98).png)
+![Screenshoot PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Screenshots/Screenshot%20(99).png)
+![Screenshoot PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Screenshots/Screenshot%20(100).png)
+![Screenshoot PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Screenshots/Screenshot%20(101).png)
+![Screenshoot PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Screenshots/Screenshot%20(102).png)
