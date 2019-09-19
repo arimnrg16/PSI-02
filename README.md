@@ -1,6 +1,6 @@
 # PSI-02
 
-## Sistem-Informasi-Komoditas-Dinas-Pertanian-SIKDP
+## Penerimaan Siswa Baru PSB SMA SW Bintang Timur 1 Balige
 ===============================================================================
 
 A Spring Boot Project {Thymeleaf, JPA, MySql | HSQL, Spring MVC, Spring Security}
