@@ -28,11 +28,11 @@ Current user:
 * Email : user@gmail.com
 * Pass : user11
 
-++ROLE++
-Project Manager : Ari Whuandaniel Manurung, Panji Situmorang
-Programmer : Ari Whuandaniel Manurung
-System Analyst : Diana Pakpahan
-UI Design : Ratna Kasmala
+ROLE
+* Project Manager : Ari Whuandaniel Manurung, Panji Situmorang
+* Programmer : Ari Whuandaniel Manurung
+* System Analyst : Diana Pakpahan
+* UI Design : Ratna Kasmala
 
 SOME SCREENSHOTS:
 
