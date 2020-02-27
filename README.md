@@ -28,6 +28,12 @@ Current user:
 * Email : user@gmail.com
 * Pass : user11
 
+++ROLE++
+Project Manager : Ari Whuandaniel Manurung, Panji Situmorang
+Programmer : Ari Whuandaniel Manurung
+System Analyst : Diana Pakpahan
+UI Design : Ratna Kasmala
+
 SOME SCREENSHOTS:
 
 ![Poster PSI-02](https://github.com/arimnrg16/PSI-02/blob/master/Poster%20PSI-02/1.png)
